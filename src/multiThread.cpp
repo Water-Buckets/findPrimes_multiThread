@@ -11,8 +11,6 @@ void multiThread(const int &threads, const char &m, const long long &n, const st
     long long sqrtN = std::sqrt(n);
     std::vector<long long> preSievedPrimes;
     preSieve(sqrtN, m, preSievedPrimes);
-    std::vector<long long> primes;
-    primes.insert(primes.end(), preSievedPrimes.begin(), preSievedPrimes.end());
     auto endPre = std::chrono::steady_clock::now();
     auto diffPre = std::chrono::duration_cast<std::chrono::nanoseconds>(endPre - startPre);
     long long durationPre = diffPre.count();
@@ -43,7 +41,7 @@ void multiThread(const int &threads, const char &m, const long long &n, const st
     for (long long i: preSievedPrimes) {
         outfile << i << " ";
     }
-    long long totalSize;
+    long long totalSize = preSievedPrimes.size();
     for (auto &vec: primesVec) {
         for (long long i: vec) {
             outfile << i << " ";
