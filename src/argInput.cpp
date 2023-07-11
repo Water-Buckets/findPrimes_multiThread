@@ -19,11 +19,7 @@ void argInput(char *argv[]) {
         case 'e':
         case 'f':
         case 'g':
-            if (m == 'e') {
-                std::cerr << "Warning: Sieve Of Atkin can't be used Multithreaded, forcing monothread mode"
-                          << std::endl;
-                threads = 1;
-            } else if (threads > 1) {
+            if (threads > 1) {
                 std::cout << "Using Multithread Mode" << std::endl;
                 multiThread(threads, m, n, file);
                 break;
@@ -31,6 +27,8 @@ void argInput(char *argv[]) {
                 std::cout << "Using Monothread Mode" << std::endl;
                 monoThread(n, m, file);
                 break;
+            } else {
+                throw std::invalid_argument("Invalid input.");
             }
         default:
             throw std::invalid_argument("Invalid input.");

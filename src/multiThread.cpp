@@ -6,6 +6,7 @@
 
 
 void multiThread(const int &threads, const char &m, const long long &n, const std::string &file) {
+    if (m == 'e') exit(0);
     long long sqrtN = std::sqrt(n);
     std::vector<long long> preSievedPrimes;
     preSieve(sqrtN, m, preSievedPrimes);
