@@ -6,7 +6,10 @@
 
 
 void multiThread(const int &threads, const char &m, const long long &n, const std::string &file) {
-    if (m == 'e') exit(0);
+    if (m == 'e') {
+        std::cerr << "Error: Trying to use Sieve of Atkin when using multithread mode";
+        exit(0);
+    }
     auto startPre = std::chrono::steady_clock::now();
     long long sqrtN = std::sqrt(n);
     std::vector<long long> preSievedPrimes;
