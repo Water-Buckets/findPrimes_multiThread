@@ -24,10 +24,12 @@ void argInput(char *argv[]) {
                     std::cerr << "Warning: Sieve Of Atkin can't be used Multithreaded, forcing threads to be 1"
                               << std::endl;
                     threads = 1;
+                    monoThread(n, m, file);
+                } else {
+                    std::cout << "Using Multithread Mode" << std::endl;
+                    multiThread(threads, m, n, file);
+                    break;
                 }
-                std::cout << "Using Multithread Mode" << std::endl;
-                multiThread(threads, m, n, file);
-                break;
             } else if (threads == 1) {
                 std::cout << "Using Monothread Mode" << std::endl;
                 monoThread(n, m, file);
