@@ -21,4 +21,4 @@ add_executable(findPrimes_multiThread src/main.cpp
         src/sieves/sieveMethods.h
 )
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS=ON)
