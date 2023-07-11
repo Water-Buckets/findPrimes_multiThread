@@ -3,7 +3,6 @@
 //
 
 #include "sievePrimes.h"
-#include "preSieve.h"
 
 void sievePrimes(const long long &lL, const long long &uL, const char &m, std::vector<long long> &primes,
                  const std::vector<long long> &preSievedPrimes) {

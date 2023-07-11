@@ -7,8 +7,14 @@
 
 #include "bits/stdc++.h"
 #include "multiThread.h"
-#include "utilities.h"
 #include "monoThread.h"
+
+inline bool isNumeric(const std::string &str) {
+    for (char c: str) {
+        if (!std::isdigit(c)) return false;
+    }
+    return true;
+}
 
 void argInput(char *argv[]);
 

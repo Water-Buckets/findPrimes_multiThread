@@ -11,8 +11,6 @@ add_executable(findPrimes_multiThread src/main.cpp
         src/multiThread.cpp
         src/sievePrimes.cpp
         src/sievePrimes.h
-        src/utilities.cpp
-        src/utilities.h
         src/bits/stdc++.h
         src/monoThread.cpp
         src/monoThread.h
