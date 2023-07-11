@@ -17,11 +17,14 @@ void argInput(char *argv[]) {
         case 'c':
         case 'd':
         case 'e':
-            std::cerr << "Warning: Sieve Of Atkin can't be used Multithreaded, forcing threads to be 1" << std::endl;
-            threads = 1;
         case 'f':
         case 'g':
             if (threads > 1) {
+                if (m == 'e') {
+                    std::cerr << "Warning: Sieve Of Atkin can't be used Multithreaded, forcing threads to be 1"
+                              << std::endl;
+                    threads = 1;
+                }
                 std::cout << "Using Multithread Mode" << std::endl;
                 multiThread(threads, m, n, file);
                 break;
