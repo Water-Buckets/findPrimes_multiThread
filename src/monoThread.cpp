@@ -56,5 +56,5 @@ void monoThread(const long long &n, const char &m, const std::string &file) {
     long long durationWrite = diffWrite.count();
     std::clog << "Time elapsed writing to file: " << double(durationWrite) / 1000000000 << " seconds." << std::endl;
     std::cout << "Total time elapsed: " << double(duration + durationWrite) / 1000000000 << " seconds." << std::endl;
-    std::cout << "Done. Check" << file << "for " << primes.size() << " results." << std::endl;
+    std::cout << "Done. Check " << file << " for " << primes.size() << " results." << std::endl;
 }
