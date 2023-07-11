@@ -8,6 +8,7 @@
 #include "bits/stdc++.h"
 #include "sieves/preSieveMethods.h"
 
-void preSieve(const long long &uL, const char &m, std::vector<long long> &primes);
+void preSieve(const long long &uL, const char &m,
+              std::vector<long long> &primes);
 
-#endif //FINDPRIMES_MULTITHREAD_PRESIEVE_H
+#endif // FINDPRIMES_MULTITHREAD_PRESIEVE_H

@@ -8,7 +8,8 @@
 #include "bits/stdc++.h"
 #include "sieves/sieveMethods.h"
 
-void sievePrimes(const long long &lL, const long long &uL, const char &m, std::vector<long long> &primes,
+void sievePrimes(const long long &lL, const long long &uL, const char &m,
+                 std::vector<long long> &primes,
                  const std::vector<long long> &preSievedPrimes);
 
-#endif //FINDPRIMES_MULTITHREAD_SIEVEPRIMES_H
+#endif // FINDPRIMES_MULTITHREAD_SIEVEPRIMES_H
