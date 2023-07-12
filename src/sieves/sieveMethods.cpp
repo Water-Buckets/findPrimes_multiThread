@@ -60,10 +60,6 @@ void sundaramSieve(const long long &lL, const long long &uL, std::vector<long lo
         if (isPrime[i]) primes.push_back(2 * i + 1);
 }
 
-void atkinSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                const std::vector<long long> &preSievedPrimes) {
-    // Due to the complexity of the Atkin Sieve algorithm, it might not be possible to implement it with pre-sieved primes or a custom range.
-}
 
 void incrementalSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
                       const std::vector<long long> &preSievedPrimes) {
