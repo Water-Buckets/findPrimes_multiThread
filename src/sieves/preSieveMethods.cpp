@@ -104,7 +104,7 @@ void incrementalSieve(const long long &n, std::vector<long long> &primes) {
   }
 }
 
-void wheelSieve30(long long n, std::vector<long long> &primes) {
+void wheelSieve(const long long &n, std::vector<long long> &primes) {
   int wheel_indices[8] = {1, 7, 11, 13, 17, 19, 23, 29};
 
   std::vector<bool> is_prime(n + 1, true);
