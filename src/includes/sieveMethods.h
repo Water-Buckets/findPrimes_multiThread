@@ -16,17 +16,16 @@ void eratosthenesSieve(const long long &lL, const long long &uL, std::vector<lon
 void eulerSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
                 const std::vector<long long> &preSievedPrimes);
 
-void sundaramSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                   const std::vector<long long> &preSievedPrimes);
+void sundaramSieve(const long long &lL, const long long &uL, std::vector<long long> &primes);
 
 void atkinSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
                 const std::vector<long long> &preSievedPrimes); //unused due tothe complexity of the Atkin Sieve algorithm
-                
+
 void incrementalSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
                       const std::vector<long long> &preSievedPrimes);
 
 void wheelSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                const std::vector<long long> &preSievedPrimes);
+                const std::vector<long long> &preSievedPrimes); //unused due to the complexity of the Wheel Sieve algorithm
 
 
 #endif //FINDPRIMES_MULTITHREAD_SIEVEMETHODS_H

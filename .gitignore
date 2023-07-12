@@ -14,3 +14,4 @@
 /.vscode/
 /.editorconfig
 /compile_commands.json
+/cmake-build-release/

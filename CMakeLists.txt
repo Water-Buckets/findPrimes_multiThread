@@ -4,21 +4,26 @@ project(findPrimes_multiThread)
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(findPrimes_multiThread src/main.cpp
-        src/main.h
+        src/includes/main.h
         src/argInput.cpp
-        src/argInput.h
-        src/multiThread.h
+        src/includes/argInput.h
+        src/includes/multiThread.h
         src/multiThread.cpp
         src/sievePrimes.cpp
-        src/sievePrimes.h
+        src/includes/sievePrimes.h
         src/bits/stdc++.h
         src/monoThread.cpp
-        src/monoThread.h
+        src/includes/monoThread.h
         src/sieves/preSieveMethods.cpp
-        src/sieves/preSieveMethods.h
+        src/includes/preSieveMethods.h
         src/preSieve.cpp
         src/sieves/sieveMethods.cpp
-        src/sieves/sieveMethods.h
+        src/includes/sieveMethods.h
 )
+
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    add_definitions(-DNDEBUG)
+endif ()
+
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
