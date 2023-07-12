@@ -5,8 +5,8 @@
 #ifndef FINDPRIMES_MULTITHREAD_MONOTHREAD_H
 #define FINDPRIMES_MULTITHREAD_MONOTHREAD_H
 
-#include "bits/stdc++.h"
-#include "sieves/preSieveMethods.h"
+#include "../bits/stdc++.h"
+#include "preSieveMethods.h"
 
 void monoThread(const long long &n, const char &m, const std::string &file);
 
