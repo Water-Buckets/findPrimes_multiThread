@@ -62,29 +62,3 @@ void incrementalSieve(const long long &lL, const long long &uL, std::vector<long
         }
     }
 }
-
-void wheelSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                const std::vector<long long> &preSievedPrimes) {
-//    std::vector<bool> isPrime(uL - lL + 1, true);
-//    std::vector<int> wheel = {1, 7, 11, 13, 17, 19, 23, 29, 31}; // Our wheel for 30.
-//
-//    for (const long long &p: preSievedPrimes) {
-//        if (p < 7) continue; // Skip 2, 3, 5 in preSievedPrimes
-//        for (long long i = ((lL + p - 1) / p) * p; i <= uL; i += p) isPrime[i - lL] = false;
-//    }
-//
-//    for (long long i = 0; i <= uL - lL; i++) {
-//        long long n = i + lL;
-//        if (isPrime[i]) {
-//            primes.push_back(n);
-//            // Get the start of the wheel for this prime.
-//            int wheelStart = std::distance(wheel.begin(), std::find(wheel.begin(), wheel.end(), n % 30));
-//            // Sieve multiples of the prime using the wheel.
-//            for (int j = wheelStart; j < wheel.size(); j++) {
-//                long long multiple = n * wheel[j];
-//                if (multiple > uL) break;
-//                isPrime[multiple - lL] = false;
-//            }
-//        }
-//    }
-}

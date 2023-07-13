@@ -33,24 +33,24 @@ void multiThread(const int &threads, const char &m, const long long &n,
     std::cout << "Time elapsed pre-sieveing:" << double(durationPre) / 1000000000 << " seconds." << std::endl;
     auto start = std::chrono::steady_clock::now();
     std::vector<std::thread> vThread;
-    long long perThread = (n - sqrtN) / threads; // per thread range
-    std::vector<std::vector<long long>> primesVec(threads); // primes vector for each thread
+    long long perThread = (n - sqrtN) / threads;
+    std::vector<std::vector<long long>> primesVec(threads);
     if (preSievedPrimes.empty()) throw std::runtime_error("Empty preSievedPrimes!");
 #ifndef NDEBUG
     std::cerr << __func__ << ": " << "perThread: " << perThread << std::endl;
 #endif
     for (int i = 0; i < threads; ++i) {
-        long long lL = sqrtN + i * perThread + 1; // lower limit
-        long long uL = sqrtN + (i + 1) * perThread; // upper limit
-        if (i == threads - 1) uL = n; // last thread
+        long long lL = sqrtN + i * perThread + 1;
+        long long uL = sqrtN + (i + 1) * perThread;
+        if (i == threads - 1) uL = n;
 #ifndef NDEBUG
         std::cerr << __func__ << ": " << "thread " << i << ": " << lL << " " << uL << std::endl;
 #endif
         std::thread thr(sievePrimes, lL, uL, std::cref(m),
                         std::ref(primesVec[i]), std::cref(preSievedPrimes));
-        vThread.emplace_back(std::move(thr)); // move thr into vThread
+        vThread.emplace_back(std::move(thr));
     }
-    for (auto &thr: vThread) if (thr.joinable()) thr.join(); // join threads
+    for (auto &thr: vThread) if (thr.joinable()) thr.join();
     auto end = std::chrono::steady_clock::now();
     auto diff = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
     long long duration = diff.count();
