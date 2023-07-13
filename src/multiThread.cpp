@@ -8,10 +8,10 @@ void multiThread(const int &threads, const char &m, const long long &n,
                  const std::string &file) {
     if (m == 'e') {
         std::cerr << "Error: Trying to use Sieve of Atkin when using multithread mode" << std::endl;
-        exit(1);
+        exit(0);
     } else if (m == 'g') {
         std::cerr << "Error: Trying to use wheel sieve when using multithread mode" << std::endl;
-        exit(2);
+        exit(0);
     }
     auto startPre = std::chrono::steady_clock::now();
     long long sqrtN = std::sqrt(n);
