@@ -78,7 +78,7 @@ void multiThread(const int &threads, const char &m, const long long &n,
     auto endWrite = std::chrono::steady_clock::now();
     auto diffWrite = std::chrono::duration_cast<std::chrono::nanoseconds>(endWrite - startWrite);
     long long durationWrite = diffWrite.count();
-    std::clog << "Time elapsed writing to file: " << double(durationWrite) / 1000000000 << " seconds." << std::endl;
+    std::cout << "Time elapsed writing to file: " << double(durationWrite) / 1000000000 << " seconds." << std::endl;
     std::cout << "Total time elapsed: " << double(durationPre + duration + durationWrite) / 1000000000 << " seconds."
               << std::endl;
     std::cout << "Done. Check " << file << " for " << totalSize << " results." << std::endl;

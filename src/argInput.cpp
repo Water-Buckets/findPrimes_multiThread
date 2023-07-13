@@ -10,7 +10,7 @@ void argInput(char *argv[]) {
     long long n = std::stoll(argv[3]);
     std::string file = argv[4];
     if (n <= 1) throw std::invalid_argument("n must be greater than 1.");
-#ifndef NDEBBUG
+#ifndef NDEBUG
     std::cerr << __func__ << ": " << threads << " " << m << " " << n << " " << file << std::endl;
 #endif
     switch (m) {
