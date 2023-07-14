@@ -7,6 +7,7 @@
 void monoThread(const long long &n, const char &m, const std::string &file) {
     std::vector<long long> primes;
     auto start = std::chrono::steady_clock::now();
+
     switch (m) {
         case 'a':
             std::clog << "Using Trial Division" << std::endl;
@@ -39,12 +40,14 @@ void monoThread(const long long &n, const char &m, const std::string &file) {
         default:
             throw std::invalid_argument("Invalid input.");
     }
+
     auto end = std::chrono::steady_clock::now();
     auto diff = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
     long long duration = diff.count();
     std::clog << "Found " << primes.size() << " primes in "
               << double(duration) / 1000000000 << " seconds." << std::endl;
     auto startWrite = std::chrono::steady_clock::now();
+
     std::ofstream outfile(file);
     if (!outfile.is_open())
         throw std::runtime_error("Failed to open file.");
@@ -52,6 +55,7 @@ void monoThread(const long long &n, const char &m, const std::string &file) {
         outfile << p << " ";
     }
     outfile.close();
+
     auto endWrite = std::chrono::steady_clock::now();
     auto diffWrite = std::chrono::duration_cast<std::chrono::nanoseconds>(
             endWrite - startWrite);

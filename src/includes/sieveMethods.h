@@ -7,8 +7,8 @@
 
 #include "../bits/stdc++.h"
 
-void trialDivision(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                   const std::vector<long long> &preSievedPrimes);
+void (*trialDivision)(const long long &lL, const long long &uL, std::vector<long long> &primes,
+                      const std::vector<long long> &preSievedPrimes);
 
 void eratosthenesSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
                        const std::vector<long long> &preSievedPrimes);
