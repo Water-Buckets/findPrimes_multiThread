@@ -23,6 +23,13 @@ void argInput(char *argv[]) {
         case 'g':
             if (threads > 1) {
                 std::cout << "Using Multithread Mode" << std::endl;
+                if (m == 'e') {
+                    std::cerr << "Error: Trying to use Sieve of Atkin when using multithread mode" << std::endl;
+                    exit(0);
+                } else if (m == 'g') {
+                    std::cerr << "Error: Trying to use wheel sieve when using multithread mode" << std::endl;
+                    exit(0);
+                }
                 multiThread(threads, m, n, file);
                 break;
             } else if (threads == 1) {
