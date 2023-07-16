@@ -25,5 +25,8 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
     add_definitions(-DNDEBUG)
 endif ()
 
+find_package(Threads REQUIRED)
+target_link_libraries(findPrimes_multiThread Threads::Threads)
+
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
