@@ -4,7 +4,7 @@
 
 #include "../includes/sieveMethods.h"
 
-void (*trialDivision)(const long long &lL, const long long &uL, std::vector<long long> &primes,
+void trialDivision(const long long &lL, const long long &uL, std::vector<long long> &primes,
                    const std::vector<long long> &preSievedPrimes) {
     for (long long i = std::max(2LL, lL); i <= uL; ++i) {
         bool isPrime = true;

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.26)
 project(findPrimes_multiThread)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 17)
 
 add_executable(findPrimes_multiThread src/main.cpp
         src/includes/main.h
