@@ -27,14 +27,18 @@ void argInput(char *argv[]) {
         monoThread(n, m, file, pMonoMethod);
     }
     if (threads > 1) {
-        std::cout << "Using multiThread mode" << std::endl;
-        if (m == 'e' || m == 'g') throw std::invalid_argument("MultiThread mode does not support this algorithm.");
-        void (*pPreSieveMethod)(const long long &n, std::vector<long long> &primes);
-        pPreSieveMethod = switchMonoMethods(m);
-        void (*pMultiMethod)(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                             const std::vector<long long> &preSievedPrimes);
-        pMultiMethod = switchMultiMethods(m);
-        multiThread(threads, n, file, pMultiMethod, pPreSieveMethod);
-    }
+        try {
+            std::cout << "Using multiThread mode" << std::endl;
+            if (m == 'e' || m == 'g') throw std::invalid_argument("MultiThread mode does not support this algorithm.");
+            void (*pPreSieveMethod)(const long long &n, std::vector<long long> &primes);
+            pPreSieveMethod = switchMonoMethods(m);
+            void (*pMultiMethod)(const long long &lL, const long long &uL, std::vector<long long> &primes,
+                                 const std::vector<long long> &preSievedPrimes);
+            pMultiMethod = switchMultiMethods(m);
+            multiThread(threads, n, file, pMultiMethod, pPreSieveMethod);
+        } catch (std::invalid_argument &e) {
+            std::cerr << e.what() << std::endl;
+            std::exit(0);
+        }
 
-}
+    }

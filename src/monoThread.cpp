@@ -7,6 +7,8 @@
 // 单线程筛选素数
 void monoThread(const long long &n, const char &m, const std::string &file,
                 void (*pMonoMethod)(const long long &n, std::vector<long long> &primes)) {
+    //
+    if (pMonoMethod == nullptr) throw std::runtime_error("Null pointer exception.");
 
     // 定义primes向量存储筛选结果
     std::vector<long long> primes;

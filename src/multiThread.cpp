@@ -11,6 +11,7 @@ void multiThread(const int &threads, const long long &n, const std::string &file
                  void (*pMultiMethod)(const long long &lL, const long long &uL, std::vector<long long> &primes,
                                       const std::vector<long long> &preSievedPrimes),
                  void (*pPreSieveMethod)(const long long &n, std::vector<long long> &primes)) {
+    if (pMultiMethod == nullptr || pPreSieveMethod == nullptr) throw std::runtime_error("Null pointer exception.");
 
     // 记录预筛开始时间
     auto startPre = std::chrono::steady_clock::now();
@@ -47,6 +48,7 @@ void multiThread(const int &threads, const long long &n, const std::string &file
     // 向量存储threads个线程
     std::vector<std::thread> vThread;
 
+    // 检查预筛结果是否为空
     if (preSievedPrimes.empty()) throw std::runtime_error("Empty preSievedPrimes!");
 
     // 启动threads个筛选线程
