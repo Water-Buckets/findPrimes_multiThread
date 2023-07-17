@@ -7,22 +7,23 @@
 
 #include "../bits/stdc++.h"
 
-void trialDivision(const long long &lL, const long long &uL, std::vector<long long> &primes,
+void segTrialDivision(const long long &lL, const long long &uL, std::vector<long long> &primes,
+                      const std::vector<long long> &preSievedPrimes);
+
+void segEratosthenesSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
+                          const std::vector<long long> &preSievedPrimes);
+
+void segEulerSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
                    const std::vector<long long> &preSievedPrimes);
 
-void eratosthenesSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                       const std::vector<long long> &preSievedPrimes);
-
-void eulerSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                const std::vector<long long> &preSievedPrimes);
-
-void sundaramSieve(const long long &lL, const long long &uL, std::vector<long long> &primes);
+void segSundaramSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
+                      const std::vector<long long> &preSievedPrimes);
 
 void atkinSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
                 const std::vector<long long> &preSievedPrimes); //unused due tothe complexity of the Atkin Sieve algorithm
 
-void incrementalSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                      const std::vector<long long> &preSievedPrimes);
+void segIncrementalSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
+                         const std::vector<long long> &preSievedPrimes);
 
 void wheelSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
                 const std::vector<long long> &preSievedPrimes); //unused due to the complexity of the Wheel Sieve algorithm

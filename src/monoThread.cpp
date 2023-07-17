@@ -5,7 +5,8 @@
 #include "includes/monoThread.h"
 
 // 单线程筛选素数
-void monoThread(const long long &n, const char &m, const std::string &file) {
+void monoThread(const long long &n, const char &m, const std::string &file,
+                void (*pMonoMethod)(const long long &n, std::vector<long long> &primes)) {
 
     // 定义primes向量存储筛选结果
     std::vector<long long> primes;
@@ -13,52 +14,8 @@ void monoThread(const long long &n, const char &m, const std::string &file) {
     // 记录开始时间
     auto start = std::chrono::steady_clock::now();
 
-    // 根据参数m选择不同筛法
-    switch (m) {
-
-        // 试除法
-        case 'a':
-            // 调用试除法算法筛选素数
-            trialDivision(n, primes);
-            break;
-
-            // 埃拉托色尼筛法
-        case 'b':
-            // 调用埃拉托色尼筛法算法筛选素数
-            eratosthenesSieve(n, primes);
-            break;
-
-            // 欧拉筛法
-        case 'c':
-            // 调用欧拉筛法算法筛选素数
-            eulerSieve(n, primes);
-            break;
-
-            // 索马拉姆筛法
-        case 'd':
-            // 调用索马拉姆筛法算法筛选素数
-            sundaramSieve(n, primes);
-            break;
-
-            // 阿特金筛法
-        case 'e':
-            // 调用阿特金筛法算法筛选素数
-            atkinSieve(n, primes);
-            break;
-
-            // 增量筛法
-        case 'f':
-            // 调用增量筛法算法筛选素数
-            incrementalSieve(n, primes);
-            break;
-
-            // 轮子筛法
-        case 'g':
-            // 调用轮子筛法算法筛选素数
-            wheelSieve(n, primes);
-            break;
-
-    }
+    // 调用筛选方法
+    (*pMonoMethod)(n, primes);
 
     // 记录结束时间
     auto end = std::chrono::steady_clock::now();

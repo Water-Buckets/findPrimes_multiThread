@@ -9,6 +9,9 @@
 #include "argInput.h"
 #include "sievePrimes.h"
 
-void multiThread(const int &threads, const char &m, const long long &n, const std::string &file);
+void multiThread(const int &threads, const long long &n, const std::string &file,
+                 void (*pMultiMethod)(const long long &lL, const long long &uL, std::vector<long long> &primes,
+                                      const std::vector<long long> &preSievedPrimes),
+                 void (*pPreSieveMethod)(const long long &n, std::vector<long long> &primes));
 
 #endif // FINDPRIMES_MULTITHREAD_MULTITHREAD_H

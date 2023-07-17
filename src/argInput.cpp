@@ -20,36 +20,21 @@ void argInput(char *argv[]) {
 #ifndef NDEBUG
     std::cerr << __func__ << ": " << threads << " " << m << " " << n << " " << file << std::endl;
 #endif
-
-    // 根据输入选择算法
-    switch (m) {
-        case 'a':
-        case 'b':
-        case 'c':
-        case 'd':
-        case 'e':
-        case 'f':
-        case 'g':
-            // 根据输入选择单线程或多线程
-            if (threads > 1) {
-                std::cout << "Using Multithread Mode" << std::endl;
-                if (m == 'e') {
-                    std::cerr << "Error: Trying to use Sieve of Atkin when using multithread mode" << std::endl;
-                    exit(0);
-                } else if (m == 'g') {
-                    std::cerr << "Error: Trying to use wheel sieve when using multithread mode" << std::endl;
-                    exit(0);
-                }
-                multiThread(threads, m, n, file);
-                break;
-            } else if (threads == 1) {
-                std::cout << "Using Monothread Mode" << std::endl;
-                monoThread(n, m, file);
-                break;
-            } else {
-                throw std::invalid_argument("Invalid input.");
-            }
-        default:
-            throw std::invalid_argument("Invalid input.");
+    if (threads == 1) {
+        std::cout << "Using monoThread mode" << std::endl;
+        void (*pMonoMethod)(const long long &n, std::vector<long long> &primes);
+        pMonoMethod = switchMonoMethods(m);
+        monoThread(n, m, file, pMonoMethod);
     }
+    if (threads > 1) {
+        std::cout << "Using multiThread mode" << std::endl;
+        if (m == 'e' || m == 'g') throw std::invalid_argument("MultiThread mode does not support this algorithm.");
+        void (*pPreSieveMethod)(const long long &n, std::vector<long long> &primes);
+        pPreSieveMethod = switchMonoMethods(m);
+        void (*pMultiMethod)(const long long &lL, const long long &uL, std::vector<long long> &primes,
+                             const std::vector<long long> &preSievedPrimes);
+        pMultiMethod = switchMultiMethods(m);
+        multiThread(threads, n, file, pMultiMethod, pPreSieveMethod);
+    }
+
 }

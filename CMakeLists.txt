@@ -9,16 +9,14 @@ add_executable(findPrimes_multiThread src/main.cpp
         src/includes/argInput.h
         src/includes/multiThread.h
         src/multiThread.cpp
-        src/sievePrimes.cpp
         src/includes/sievePrimes.h
         src/bits/stdc++.h
         src/monoThread.cpp
         src/includes/monoThread.h
-        src/sieves/preSieveMethods.cpp
         src/includes/preSieveMethods.h
-        src/preSieve.cpp
-        src/sieves/sieveMethods.cpp
         src/includes/sieveMethods.h
+        src/sieves/sieveMethods.cpp
+        src/sieves/preSieveMethods.cpp
 )
 
 if (CMAKE_BUILD_TYPE STREQUAL "Release")

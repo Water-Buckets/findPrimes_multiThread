@@ -3,10 +3,14 @@
 //
 #include "includes/multiThread.h"
 #include "includes/preSieve.h"
+#include "includes/sieveMethods.h"
+#include "includes/preSieveMethods.h"
 
 // 多线程筛选素数
-void multiThread(const int &threads, const char &m, const long long &n,
-                 const std::string &file) {
+void multiThread(const int &threads, const long long &n, const std::string &file,
+                 void (*pMultiMethod)(const long long &lL, const long long &uL, std::vector<long long> &primes,
+                                      const std::vector<long long> &preSievedPrimes),
+                 void (*pPreSieveMethod)(const long long &n, std::vector<long long> &primes)) {
 
     // 记录预筛开始时间
     auto startPre = std::chrono::steady_clock::now();
@@ -18,7 +22,7 @@ void multiThread(const int &threads, const char &m, const long long &n,
     std::vector<long long> preSievedPrimes;
 
     // 根据m调用预筛算法
-    preSieve(sqrtN, m, preSievedPrimes);
+    (*pPreSieveMethod)(sqrtN, preSievedPrimes);
 
     // 记录预筛结束时间
     auto endPre = std::chrono::steady_clock::now();
@@ -56,7 +60,7 @@ void multiThread(const int &threads, const char &m, const long long &n,
         if (i == threads - 1) uL = n;
 
         // 启动线程,调用sievePrimes筛选素数
-        std::thread thr(sievePrimes, lL, uL, std::cref(m),
+        std::thread thr((*pMultiMethod), lL, uL,
                         std::ref(primesVec[i]), std::cref(preSievedPrimes));
 
         // 将线程加入向量
