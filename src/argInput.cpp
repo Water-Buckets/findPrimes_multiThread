@@ -42,3 +42,4 @@ void argInput(char *argv[]) {
         }
 
     }
+}
