@@ -1,80 +1,124 @@
-//
-// Created by ASUS on 2023/7/11.
-//
-
 #include "../includes/sieveMethods.h"
 
-void segTrialDivision(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                      const std::vector<long long> &preSievedPrimes) {
-    for (long long i = std::max(2LL, lL); i <= uL; ++i) { //trial division
-        bool isPrime = true; //isPrime is true if i is a prime
-        for (const long long &p: preSievedPrimes) { //for each prime p
-            if (p * p > i) break; //if p is greater than sqrt(i), break the loop
-            if (i % p == 0) { //if p divides i
-                isPrime = false; //i is not a prime
+void trialDivision(const long long &n, std::vector<long long> &primes) {
+    if (n >= 2) primes.push_back(2); // 2 is the only even prime
+    for (long long i = 3; i <= n; i += 2) { // trial division
+        bool isPrime = false; // isPrime is true if i is a prime
+        for (long long p: primes) { // for each prime p
+            if (p * p > i) break;// if p is greater than sqrt(i), break the loop
+            if (i % p == 0) {
+                isPrime = true;// if p divides i, i is not a prime
                 break;
             }
         }
-        if (isPrime) primes.push_back(i); //if i is a prime, push it into primes
+        if (!isPrime) primes.push_back(i);// if i is a prime, add i to the list
     }
 }
 
-void segEratosthenesSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                          const std::vector<long long> &preSievedPrimes) {
-    std::vector<bool> isPrime(uL - lL + 1, true); //isPrime[i] is true if i + lL is a prime
+void eratosthenesSieve(const long long &n, std::vector<long long> &primes) {
+    std::vector<bool> isPrime((n + 2) / 2, false);// isPrime[i] is true if (2 * i + 1) is a prime
+    isPrime[0] = true;// 1 is not a prime
+    if (n >= 2) primes.push_back(2);// 2 is the only even prime
+    for (long long i = 3; i <= n; i += 2) {// check odd integers i
+        if (!isPrime[i / 2]) {
+            primes.push_back(i);// i is a prime
 
-    //for each prime p, for each multiple of p, mark it as not prime
-    for (const long long &p: preSievedPrimes)
-        for (long long i = std::max(p * p, (lL + p - 1) / p * p); i <= uL; i += p)isPrime[i - lL] = false;
-
-    //for each prime i, if it is a prime, push it into primes
-    for (long long i = (lL < 2) ? 2 - lL : 0; i <= uL - lL; ++i) if (isPrime[i]) primes.push_back(i + lL);
-}
-
-void segEulerSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                   const std::vector<long long> &preSievedPrimes) {
-    std::vector<bool> isPrime(uL - lL + 1, true);//isPrime[i] is true if i + lL is a prime
-
-    //for each prime p, for each multiple of p, mark it as not prime
-    for (const long long &p: preSievedPrimes)
-        for (long long i = std::max(p * p, (lL + p - 1) / p * p); i <= uL; i += p)isPrime[i - lL] = false;
-
-    //for each prime i, if it is a prime, push it into primes and mark its multiples as not prime
-    for (long long i = (lL < 2) ? 2 - lL : 0; i <= uL - lL; ++i) {
-        if (isPrime[i]) {
-            primes.push_back(i + lL);
-            for (long long j = (i + lL) * (i + lL); j <= uL; j += i + lL) isPrime[j - lL] = false;
+            // mark multiples of i as non-prime
+            for (long long j = i * i; j <= n; j += 2 * i) isPrime[j / 2] = true;//
         }
     }
 }
 
-void segSundaramSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                      const std::vector<long long> &preSievedPrimes) {
-    const long long &nNew = (uL - 1) / 2; //nNew is the number of odd numbers in [1, uL]
-    std::vector<bool> isPrime(nNew + 1, true); //isPrime[i] is true if 2 * i + 1 is a prime
+void eulerSieve(const long long &n, std::vector<long long> &primes) {
+    std::vector<bool> isPrime(n + 1, false);// isPrime[i] is true if i is a prime
+    if (n >= 2) primes.push_back(2);// 2 is the only even prime
+    for (long long i = 3; i <= n; i += 2) {// check odd integers i
+        if (!isPrime[i]) {
+            primes.push_back(i);// i is a prime
 
-    //for each pair (i, j), if i + j + 2 * i * j <= nNew, mark i + j + 2 * i * j as not prime
-    for (long long i = 1; i <= nNew; ++i)
-        for (long long j = i; (i + j + 2 * i * j) <= nNew; ++j) isPrime[i + j + 2 * i * j] = false;
-
-    //for each prime i, push 2 * i + 1 into primes
-    for (long long i = std::max(lL / 2, 1LL); i <= nNew; ++i) if (isPrime[i]) primes.push_back(2 * i + 1);
+            // mark multiples of i as non-prime
+            if (i <= n / i) for (long long j = i * i; j <= n; j += i * 2) isPrime[j] = true;
+        }
+    }
 }
 
-void segIncrementalSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                         const std::vector<long long> &preSievedPrimes) {
-    std::vector<bool> isPrime(uL - lL + 1, true); //isPrime[i] is true if i + lL is a prime
+void sundaramSieve(const long long &n, std::vector<long long> &primes) {
+    const long long &nNew = n / 2;// nNew is the number of odd integers in [1, n]
+    std::vector<bool> isPrime(nNew + 1, false);// isPrime[i] is true if i is a prime
 
-    //for each prime p, for each multiple of p, mark it as not prime
-    for (const long long &p: preSievedPrimes)
-        for (long long i = std::max(p * p, (lL + p - 1) / p * p); i <= uL; i += p)isPrime[i - lL] = false;
+    // generate all the numbers of the form i + j + 2 * i * j
+    for (long long i = 1; i <= nNew; ++i)
+        for (long long j = i; (i + j + 2 * i * j) <= nNew; ++j) isPrime[i + j + 2 * i * j] = true;
+    if (n > 1) primes.push_back(2); // 2 is the only even prime
 
-    //for each prime i, if it is a prime, push it into primes and mark its multiples as not prime
-    for (long long i = (lL < 2) ? 2 - lL : 0; i <= uL - lL; ++i) {
-        if (isPrime[i]) {
-            primes.push_back(i + lL);
-            for (long long j = (i + lL) * (i + lL); j <= uL; j += i + lL) {
-                isPrime[j - lL] = false;
+    // generate primes
+    for (long long i = 1; i <= nNew; ++i) if (!isPrime[i]) primes.push_back(2 * i + 1);
+}
+
+void atkinSieve(const long long &n, std::vector<long long> &primes) {
+    std::vector<bool> isPrime(n + 1, false);// isPrime[i] is true if i is a prime
+
+    // put in candidate primes: integers which have an odd number of
+    for (long long x = 1; x * x <= n; ++x) {
+        // solutions to the equation: x^2 + y^2 = n
+        for (long long y = 1; y * y <= n; ++y) {
+            long long w = 4 * x * x + y * y;// first quadratic using m = 4
+            // w is prime, mark multiples of its square as non-prime
+            if (w <= n && (w % 12 == 1 || w % 12 == 5)) isPrime[w].flip();
+            w = 3 * x * x + y * y; // second quadratic using m = 3
+            if (w <= n && w % 12 == 7) isPrime[w].flip(); // w is prime, mark multiples of its square as non-prime
+
+            // third quadratic using m = 3 (x > y)
+            if (x > y) {
+                w = 3 * x * x - y * y;
+                if (w <= n && w % 12 == 11) isPrime[w].flip(); // w is prime, mark multiples of its square as non-prime
+            }
+        }
+    }
+
+    // eliminate composites by sieving
+    for (long long a = 5; a * a <= n; ++a)
+        if (isPrime[a])
+            // mark multiples of square as non-prime
+            for (long long b = a * a; b <= n; b += a * a)
+                isPrime[b] = false;
+    if (2 <= n) primes.push_back(2);// 2 is the only even prime
+    if (3 <= n) primes.push_back(3);// 3 is the only odd prime
+    for (long long a = 5; a <= n; a += 2) if (isPrime[a]) primes.push_back(a);// add primes
+}
+
+void incrementalSieve(const long long &n, std::vector<long long> &primes) {
+    std::vector<bool> isPrime(n + 1, false);// isPrime[i] is true if i is a prime
+    if (n >= 2) primes.push_back(2);// 2 is the only even prime
+    for (long long p = 3; p <= n; p += 2) {
+        if (!isPrime[p]) {
+            primes.push_back(p);// p is a prime
+            // mark multiples of p as non-prime
+            for (long long i = p * p; i <= n; i += p) isPrime[i] = true;
+        }
+    }
+}
+
+void wheelSieve(const long long &n, std::vector<long long> &primes) {
+    primes.push_back(2);// 2 is the only even prime
+    primes.push_back(3);// 3 is the only prime divisible by 3
+    primes.push_back(5);// 5 is the only prime divisible by 5
+
+    // wheel factorization
+    const int wheel_indices[8] = {1, 7, 11, 13, 17, 19, 23, 29};
+    std::vector<bool> is_prime(n + 1, true);// is_prime[i] is true if i is a prime
+    is_prime[0] = is_prime[1] = false;// 0 and 1 are not primes
+
+    // put in candidate primes: integers which have an odd number of
+    for (long long i = 0; i <= n; i += 30) {
+        // solutions to the equation: x^2 + y^2 = n
+        for (int wheel_indice: wheel_indices) {
+            long long num = i + wheel_indice;// num is prime if it is not divisible by any of the first 7 primes
+            if (num > n) break;// num is out of range
+            if (is_prime[num]) {
+                primes.push_back(num);// num is a prime
+                // mark multiples of num as non-prime
+                for (long long p = num * num; p <= n; p += num) is_prime[p] = false;
             }
         }
     }

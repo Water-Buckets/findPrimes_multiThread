@@ -8,8 +8,8 @@
 #include "../bits/stdc++.h"
 #include "monoThread.h"
 #include "multiThread.h"
-#include "preSieveMethods.h"
 #include "sieveMethods.h"
+#include "segSieveMethods.h"
 
 inline bool isNumeric(const std::string &str) {
     for (char c: str) if (!std::isdigit(c)) return false;
