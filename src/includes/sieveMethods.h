@@ -1,32 +1,24 @@
-//
-// Created by ASUS on 2023/7/11.
-//
+#ifndef FINDPRIMES_PRIMES_H
+#define FINDPRIMES_PRIMES_H
 
-#ifndef FINDPRIMES_MULTITHREAD_SIEVEMETHODS_H
-#define FINDPRIMES_MULTITHREAD_SIEVEMETHODS_H
+#pragma once
 
-#include "../bits/stdc++.h"
-
-void segTrialDivision(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                      const std::vector<long long> &preSievedPrimes);
-
-void segEratosthenesSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                          const std::vector<long long> &preSievedPrimes);
-
-void segEulerSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                   const std::vector<long long> &preSievedPrimes);
-
-void segSundaramSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                      const std::vector<long long> &preSievedPrimes);
-
-void atkinSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                const std::vector<long long> &preSievedPrimes); //unused due tothe complexity of the Atkin Sieve algorithm
-
-void segIncrementalSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                         const std::vector<long long> &preSievedPrimes);
-
-void wheelSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                const std::vector<long long> &preSievedPrimes); //unused due to the complexity of the Wheel Sieve algorithm
+#include "bits/stdc++.h"
 
 
-#endif //FINDPRIMES_MULTITHREAD_SIEVEMETHODS_H
+void trialDivision(const long long &n, std::vector<long long> &primes);
+
+void eratosthenesSieve(const long long &n, std::vector<long long> &primes);
+
+void eulerSieve(const long long &n, std::vector<long long> &primes);
+
+void sundaramSieve(const long long &n, std::vector<long long> &primes);
+
+void atkinSieve(const long long &n, std::vector<long long> &primes);
+
+void incrementalSieve(const long long &n, std::vector<long long> &primes);
+
+void wheelSieve(const long long &n, std::vector<long long> &primes);
+
+
+#endif //FINDPRIMES_PRIMES_H

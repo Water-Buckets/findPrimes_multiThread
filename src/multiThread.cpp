@@ -3,8 +3,8 @@
 //
 #include "includes/multiThread.h"
 #include "includes/preSieve.h"
+#include "includes/segSieveMethods.h"
 #include "includes/sieveMethods.h"
-#include "includes/preSieveMethods.h"
 
 // 多线程筛选素数
 void multiThread(const int &threads, const long long &n, const std::string &file,
@@ -39,14 +39,14 @@ void multiThread(const int &threads, const long long &n, const std::string &file
     // 记录筛选开始时间
     auto start = std::chrono::steady_clock::now();
 
-    // threads个线程的筛选结果
-    std::vector<std::vector<long long>> primesVec(threads);
-
     // 每个线程筛选的数值范围
     long long perThread = (n - sqrtN) / threads;
 
     // 向量存储threads个线程
     std::vector<std::thread> vThread;
+
+    // threads个线程的筛选结果
+    std::vector<std::vector<long long>> primesVec(threads);
 
     // 检查预筛结果是否为空
     if (preSievedPrimes.empty()) throw std::runtime_error("Empty preSievedPrimes!");

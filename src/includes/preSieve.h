@@ -6,7 +6,7 @@
 #define FINDPRIMES_MULTITHREAD_PRESIEVE_H
 
 #include "../bits/stdc++.h"
-#include "preSieveMethods.h"
+#include "sieveMethods.h"
 
 void preSieve(const long long &uL, const char &m, std::vector<long long> &primes);
 
