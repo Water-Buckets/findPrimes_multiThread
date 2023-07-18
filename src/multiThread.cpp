@@ -12,6 +12,7 @@ void multiThread(
                          const std::vector<long long> &preSievedPrimes),
     void (*pPreSieveMethod)(const long long &n,
                             std::vector<long long> &primes)) {
+  // 检查函数指针是否为空
   if (pMultiMethod == nullptr || pPreSieveMethod == nullptr)
     throw std::runtime_error("Null pointer exception.");
 
