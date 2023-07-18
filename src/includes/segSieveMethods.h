@@ -7,26 +7,36 @@
 
 #include "../bits/stdc++.h"
 
-void segTrialDivision(const long long &lL, const long long &uL, std::vector<long long> &primes,
+void segTrialDivision(const long long &lL, const long long &uL,
+                      std::vector<long long> &primes,
                       const std::vector<long long> &preSievedPrimes);
 
-void segEratosthenesSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
+void segEratosthenesSieve(const long long &lL, const long long &uL,
+                          std::vector<long long> &primes,
                           const std::vector<long long> &preSievedPrimes);
 
-void segEulerSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
+void segEulerSieve(const long long &lL, const long long &uL,
+                   std::vector<long long> &primes,
                    const std::vector<long long> &preSievedPrimes);
 
-void segSundaramSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
+void segSundaramSieve(const long long &lL, const long long &uL,
+                      std::vector<long long> &primes,
                       const std::vector<long long> &preSievedPrimes);
 
-void atkinSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                const std::vector<long long> &preSievedPrimes); //unused due tothe complexity of the Atkin Sieve algorithm
+void atkinSieve(const long long &lL, const long long &uL,
+                std::vector<long long> &primes,
+                const std::vector<long long>
+                    &preSievedPrimes); // unused due tothe complexity of the
+                                       // Atkin Sieve algorithm
 
-void segIncrementalSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
+void segIncrementalSieve(const long long &lL, const long long &uL,
+                         std::vector<long long> &primes,
                          const std::vector<long long> &preSievedPrimes);
 
-void wheelSieve(const long long &lL, const long long &uL, std::vector<long long> &primes,
-                const std::vector<long long> &preSievedPrimes); //unused due to the complexity of the Wheel Sieve algorithm
+void wheelSieve(const long long &lL, const long long &uL,
+                std::vector<long long> &primes,
+                const std::vector<long long>
+                    &preSievedPrimes); // unused due to the complexity of the
+                                       // Wheel Sieve algorithm
 
-
-#endif //FINDPRIMES_MULTITHREAD_SEGSIEVEMETHODS_H
+#endif // FINDPRIMES_MULTITHREAD_SEGSIEVEMETHODS_H
