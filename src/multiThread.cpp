@@ -30,8 +30,8 @@ void multiThread(
   auto duration = sieveResults.second;
 
   auto writeResults =
-      timer(writeToFile, "Time elapsed writing to file: ", preSievedPrimes,
-            primesVec, file);
+      timer(writeToFileMultiT,
+            "Time elapsed writing to file: ", preSievedPrimes, primesVec, file);
   auto totalSize = writeResults.first;
   auto durationWrite = writeResults.second;
 

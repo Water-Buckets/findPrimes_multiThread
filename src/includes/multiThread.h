@@ -71,9 +71,9 @@ inline std::vector<std::vector<long long>> multiThreadSieve(
 }
 
 inline long long
-writeToFile(const std::vector<long long> &preSievedPrimes,
-            const std::vector<std::vector<long long>> &primesVec,
-            const std::string &file) {
+writeToFileMultiT(const std::vector<long long> &preSievedPrimes,
+                  const std::vector<std::vector<long long>> &primesVec,
+                  const std::string &file) {
   // 打开输出文件
   std::ofstream outfile(file);
 

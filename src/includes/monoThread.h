@@ -19,7 +19,8 @@ inline std::vector<long long> monoThreadSieve(
   return primes;
 }
 
-inline int writeToFile(std::vector<long long> primes, const std::string &file) {
+inline int writeToFileMonoT(std::vector<long long> primes
+                            const std::string &file) {
   // 打开输出文件
   std::ofstream outfile(file);
 

@@ -19,7 +19,7 @@ void monoThread(const long long &n, const std::string &file,
   auto duration = results.second;
 
   auto writeResults =
-      timer(writeToFile, "Time elapsed writing to file: ", primes, file);
+      timer(writeToFileMonoT, "Time elapsed writing to file: ", primes, file);
   if (writeResults.first != 0)
     throw std::runtime_error("Error writing to file");
 
