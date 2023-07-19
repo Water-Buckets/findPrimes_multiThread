@@ -3,7 +3,7 @@
 //
 
 #include "includes/monoThread.h"
-#include "utilities.h"
+
 
 // 单线程筛选素数
 void monoThread(const long long &n, const std::string &file,

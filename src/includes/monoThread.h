@@ -7,6 +7,7 @@
 
 #include "../bits/stdc++.h"
 #include "sieveMethods.h"
+#include "utilities.h"
 
 inline std::vector<long long> monoThreadSieve(
     const long long &n,
