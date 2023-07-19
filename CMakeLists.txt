@@ -16,6 +16,8 @@ add_executable(findPrimes_multiThread src/main.cpp
         src/includes/segSieveMethods.h
         src/sieves/segSieveMethods.cpp
         src/sieves/sieveMethods.cpp
+        src/includes/utilities.h
+        src/utilities.cpp
 )
 
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
