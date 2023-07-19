@@ -3,7 +3,6 @@
 //
 #include "includes/multiThread.h"
 #include "includes/sieveMethods.h"
-#include "utilities.h"
 
 // 多线程筛选素数
 void multiThread(
