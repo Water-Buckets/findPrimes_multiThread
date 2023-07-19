@@ -27,7 +27,7 @@ void argInput(char *argv[]) {
     std::cout << "Using monoThread mode" << std::endl;
     void (*pMonoMethod)(const long long &n, std::vector<long long> &primes);
     pMonoMethod = switchMonoMethods(m);
-    monoThread(n, m, file, pMonoMethod);
+    monoThread(n, file, pMonoMethod);
   }
   if (threads > 1) {
     try {
