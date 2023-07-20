@@ -36,25 +36,25 @@ jobs:
         run: ctest -C ${{env.BUILD_TYPE}}
 
       - name: Test For trialDivision(multithread)
-        run: ./build/findPrimes_multiThread 8 a 99999989 primes.txt
+        run: ./build/findPrimes_multiThread 16 a 99999989 primes.txt
 
       - name: Test For eratosthenesSieve(multithread)
-        run: ./build/findPrimes_multiThread 8 b 99999989 primes.txt
+        run: ./build/findPrimes_multiThread 16 b 99999989 primes.txt
 
       - name: Test For eulerSieve(multithread)
-        run: ./build/findPrimes_multiThread 8 c 99999989 primes.txt
+        run: ./build/findPrimes_multiThread 16 c 99999989 primes.txt
 
       - name: Test For sundaramSieve(multithread)
-        run: ./build/findPrimes_multiThread 8 d 99999989 primes.txt
+        run: ./build/findPrimes_multiThread 16 d 99999989 primes.txt
 
       - name: Test For atkinSieve(multithread)
-        run: ./build/findPrimes_multiThread 8 e 99999989 primes.txt
+        run: ./build/findPrimes_multiThread 16 e 99999989 primes.txt
 
       - name: Test For incrementalSieve(multithread)
-        run: ./build/findPrimes_multiThread 8 f 99999989 primes.txt
+        run: ./build/findPrimes_multiThread 16 f 99999989 primes.txt
 
       - name: Test For wheelSieve(multithread)
-        run: ./build/findPrimes_multiThread 8 g 99999989 primes.txt
+        run: ./build/findPrimes_multiThread 16 g 99999989 primes.txt
 
       - name: Test For trialDivision(monothread)
         run: ./build/findPrimes_multiThread 1 a 99999989 primes.txt
