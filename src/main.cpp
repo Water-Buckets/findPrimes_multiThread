@@ -3,15 +3,15 @@
 int main(int argc, char *argv[]) {
   switch (argc) {
   case 1:
-    // 无参数时打印帮助信息
+    // Print help when no arguments are given
     printHelp();
     break;
   case 5:
-    // 有参数时执行
+    // When 4 arguments are given, start the program
     argInput(argv);
     break;
   default:
-    // 参数数量错误时抛出异常
     throw std::invalid_argument("Invalid input.");
+    // Throw an exception when the number of arguments is invalid
   }
 }

@@ -3,7 +3,6 @@
 //
 #include "includes/multiThread.h"
 
-// 多线程筛选素数
 void multiThread(
     const int &threads, const long long &n, const std::string &file,
     void (*pMultiMethod)(const long long &lL, const long long &uL,
@@ -11,7 +10,7 @@ void multiThread(
                          const std::vector<long long> &preSievedPrimes),
     void (*pPreSieveMethod)(const long long &n,
                             std::vector<long long> &primes)) {
-  // 检查函数指针是否为空
+  // check if the input is valid
   if (pMultiMethod == nullptr || pPreSieveMethod == nullptr)
     throw std::runtime_error("Null pointer exception.");
 
@@ -34,12 +33,12 @@ void multiThread(
   auto totalSize = writeResults.first;
   auto durationWrite = writeResults.second;
 
-  // 输出总时间
+  // output total time elapsed
   std::cout << "Total time elapsed: "
             << double(durationPre + duration + durationWrite) / 1000000000
             << " seconds." << std::endl;
 
-  // 提示输出结果数量
+  // output file and result size
   std::cout << "Done. Check " << file << " for " << totalSize << " results."
             << std::endl;
 }
