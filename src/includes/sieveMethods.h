@@ -3,7 +3,9 @@
 
 #pragma once
 
-#include "bits/stdc++.h"
+#include <vector>
+#include <algorithm>
+
 
 void trialDivision(const long long &n, std::vector<long long> &primes);
 

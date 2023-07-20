@@ -5,9 +5,9 @@
 #ifndef FINDPRIMES_MULTITHREAD_MONOTHREAD_H
 #define FINDPRIMES_MULTITHREAD_MONOTHREAD_H
 
-#include "../bits/stdc++.h"
-#include "sieveMethods.h"
 #include "utilities.h"
+#include <fstream>
+#include <vector>
 
 inline std::vector<long long> monoThreadSieve(
     const long long &n,

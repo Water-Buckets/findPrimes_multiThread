@@ -2,10 +2,7 @@
 // Created by ASUS on 2023/7/7.
 //
 #include "includes/argInput.h"
-#include <iostream>
-#include <ostream>
-#include <stdexcept>
-#include <string>
+
 
 void argInput(char *argv[]) {
   // argv[1]: 线程数, argv[2]: 算法, argv[3]: 上限, argv[4]: 输出文件

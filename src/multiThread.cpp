@@ -2,7 +2,6 @@
 // Created by ASUS on 2023/7/7.
 //
 #include "includes/multiThread.h"
-#include "includes/sieveMethods.h"
 
 // 多线程筛选素数
 void multiThread(

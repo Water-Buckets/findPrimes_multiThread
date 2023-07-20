@@ -5,9 +5,11 @@
 #ifndef FINDPRIMES_MULTITHREAD_MULTITHREAD_H
 #define FINDPRIMES_MULTITHREAD_MULTITHREAD_H
 
-#include "../bits/stdc++.h"
-#include "argInput.h"
 #include "utilities.h"
+#include <cmath>
+#include <fstream>
+#include <thread>
+#include <vector>
 
 inline auto preSieve(const long long &n,
                      void (*pPreSieveMethod)(const long long &n,

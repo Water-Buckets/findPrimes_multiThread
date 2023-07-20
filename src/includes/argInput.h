@@ -5,11 +5,15 @@
 #ifndef FINDPRIMES_MULTITHREAD_ARGINPUT_H
 #define FINDPRIMES_MULTITHREAD_ARGINPUT_H
 
-#include "../bits/stdc++.h"
 #include "monoThread.h"
 #include "multiThread.h"
 #include "segSieveMethods.h"
 #include "sieveMethods.h"
+#include <cctype>
+#include <iostream>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
 inline bool isNumeric(const std::string &str) {
   for (char c : str)

@@ -9,7 +9,6 @@ add_executable(findPrimes_multiThread src/main.cpp
         src/includes/argInput.h
         src/includes/multiThread.h
         src/multiThread.cpp
-        src/bits/stdc++.h
         src/monoThread.cpp
         src/includes/monoThread.h
         src/includes/sieveMethods.h
