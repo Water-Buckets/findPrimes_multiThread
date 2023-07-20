@@ -24,12 +24,12 @@ void multiThread(
   auto sieveResults = timer(multiThreadSieve, "Time elapsed sieveing: ", n,
                             sqrtN, threads, preSievedPrimes, pMultiMethod);
 
-  auto primesVec = sieveResults.first;
+  auto primesMat = sieveResults.first;
   auto duration = sieveResults.second;
 
   auto writeResults =
       timer(writeToFileMultiT,
-            "Time elapsed writing to file: ", preSievedPrimes, primesVec, file);
+            "Time elapsed writing to file: ", preSievedPrimes, primesMat, file);
   auto totalSize = writeResults.first;
   auto durationWrite = writeResults.second;
 

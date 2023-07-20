@@ -9,6 +9,7 @@
 #include <fstream>
 #include <vector>
 
+// main part of the monoThread function
 inline std::vector<long long> monoThreadSieve(
     const long long &n,
     void (*pMonoMethod)(const long long &n, std::vector<long long> &primes)) {
@@ -20,6 +21,7 @@ inline std::vector<long long> monoThreadSieve(
   return primes;
 }
 
+// Writing to file in monoThread mode
 inline int writeToFileMonoT(std::vector<long long> primes,
                             const std::string &file) {
   // open file
@@ -40,6 +42,7 @@ inline int writeToFileMonoT(std::vector<long long> primes,
   return 0;
 }
 
+// main function of monoThread mode
 void monoThread(const long long &n, const std::string &file,
                 void (*pMonoMethod)(const long long &n,
                                     std::vector<long long> &primes));

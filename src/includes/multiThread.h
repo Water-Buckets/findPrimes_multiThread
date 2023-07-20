@@ -11,6 +11,7 @@
 #include <thread>
 #include <vector>
 
+// Pre sieving in multiThread mode
 inline auto preSieve(const long long &n,
                      void (*pPreSieveMethod)(const long long &n,
                                              std::vector<long long> &primes)) {
@@ -26,6 +27,7 @@ inline auto preSieve(const long long &n,
   return std::make_pair(sqrtN, preSievedPrimes);
 }
 
+// the main part of multiThread function
 inline std::vector<std::vector<long long>> multiThreadSieve(
     const long long &n, const long long &sqrtN, const int &threads,
     std::vector<long long> preSievedPrimes,
@@ -72,6 +74,7 @@ inline std::vector<std::vector<long long>> multiThreadSieve(
   return primesVec;
 }
 
+// Writing to file in multiThread mode
 inline long long
 writeToFileMultiT(const std::vector<long long> &preSievedPrimes,
                   const std::vector<std::vector<long long>> &primesVec,
@@ -100,6 +103,7 @@ writeToFileMultiT(const std::vector<long long> &preSievedPrimes,
   return totalSize;
 }
 
+// main function of multiThread mode
 void multiThread(
     const int &threads, const long long &n, const std::string &file,
     void (*pMultiMethod)(const long long &lL, const long long &uL,
