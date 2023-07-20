@@ -5,6 +5,8 @@
 #include <string>
 #include <utility>
 
+// timer for the function executed
+// note that the function must have return value
 template <typename T, typename... Args>
 inline auto timer(T fMethod, std::string s, Args... args) {
   auto start = std::chrono::steady_clock::now();
