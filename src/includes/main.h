@@ -5,12 +5,7 @@
 #ifndef FINDPRIMES_MULTITHREAD_MAIN_H
 #define FINDPRIMES_MULTITHREAD_MAIN_H
 
-#include "../bits/stdc++.h"
 #include "argInput.h"
-#include "multiThread.h"
-#include <iostream>
-#include <ostream>
-#include <string>
 
 inline void printHelp() {
   std::cout << "Usage: findprimes [threads] [method] [n] [outputFile]"

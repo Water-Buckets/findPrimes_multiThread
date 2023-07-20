@@ -5,7 +5,8 @@
 #ifndef FINDPRIMES_MULTITHREAD_SEGSIEVEMETHODS_H
 #define FINDPRIMES_MULTITHREAD_SEGSIEVEMETHODS_H
 
-#include "../bits/stdc++.h"
+#include <algorithm>
+#include <vector>
 
 void segTrialDivision(const long long &lL, const long long &uL,
                       std::vector<long long> &primes,

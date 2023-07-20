@@ -4,7 +4,6 @@
 
 #include "includes/monoThread.h"
 
-
 // 单线程筛选素数
 void monoThread(const long long &n, const std::string &file,
                 void (*pMonoMethod)(const long long &n,

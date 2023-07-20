@@ -1,6 +1,8 @@
 #ifndef FINDPRIMES_MULTITHREAD_UTILITIES_H
 #define FINDPRIMES_MULTITHREAD_UTILITIES_H
-#include "../bits/stdc++.h"
+#include <chrono>
+#include <iostream>
+#include <string>
 #include <utility>
 
 template <typename T, typename... Args>

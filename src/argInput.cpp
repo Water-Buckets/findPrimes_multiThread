@@ -2,10 +2,6 @@
 // Created by ASUS on 2023/7/7.
 //
 #include "includes/argInput.h"
-#include <iostream>
-#include <ostream>
-#include <stdexcept>
-#include <string>
 
 void argInput(char *argv[]) {
   // argv[1]: 线程数, argv[2]: 算法, argv[3]: 上限, argv[4]: 输出文件
@@ -32,8 +28,7 @@ void argInput(char *argv[]) {
     void (*pMonoMethod)(const long long &n, std::vector<long long> &primes);
     pMonoMethod = switchMonoMethods(m);
     monoThread(n, file, pMonoMethod);
-  }
-  if (threads > 1) {
+  } else if (threads > 1) {
     try {
       std::cout << "Using multiThread mode" << std::endl;
       if (m == 'e' || m == 'g')
