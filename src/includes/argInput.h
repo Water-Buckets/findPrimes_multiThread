@@ -10,6 +10,7 @@
 #include "segSieveMethods.h"
 #include "sieveMethods.h"
 #include <cctype>
+#include <iostream>
 
 inline bool isNumeric(const std::string &str) {
   for (char c : str)
@@ -22,18 +23,25 @@ inline auto switchMonoMethods(const char &m)
     -> void (*)(const long long &n, std::vector<long long> &primes) {
   switch (m) {
   case 'a':
+    std::cout << "Using Trial Division" << std::endl;
     return trialDivision;
   case 'b':
+    std::cout << "Using Sieve of Eratosthenes" << std::endl;
     return eratosthenesSieve;
   case 'c':
+    std::cout << "Using Sieve of Euler" << std::endl;
     return eulerSieve;
   case 'd':
+    std::cout << "Using Sieve of Sundaram" << std::endl;
     return sundaramSieve;
   case 'e':
+    std::cout << "Using Sieve of Atkin" << std::endl;
     return atkinSieve;
   case 'f':
+    std::cout << "Using Incremental Sieve" << std::endl;
     return incrementalSieve;
   case 'g':
+    std::cout << "Using Wheel Sieve" << std::endl;
     return wheelSieve;
   default:
     throw std::invalid_argument("Invalid argument.");
