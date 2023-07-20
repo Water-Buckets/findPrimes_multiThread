@@ -2,6 +2,10 @@
 // Created by ASUS on 2023/7/7.
 //
 #include "includes/argInput.h"
+#include <iostream>
+#include <ostream>
+#include <stdexcept>
+#include <string>
 
 void argInput(char *argv[]) {
   // argv[1]: 线程数, argv[2]: 算法, argv[3]: 上限, argv[4]: 输出文件
@@ -46,6 +50,14 @@ void argInput(char *argv[]) {
     } catch (std::invalid_argument &e) {
       std::cerr << e.what() << std::endl;
       std::exit(0);
+    } catch (std::runtime_error &e) {
+      std::cerr << e.what() << std::endl;
+      std::cerr
+          << "Please submit you issues here: "
+             "https://github.com/Water-Buckets/findPrimes_multiThread/issues"
+          << std::endl;
+      std::exit(0);
     }
-  }
+  } else
+    throw std::invalid_argument("Invalid number of threads");
 }
