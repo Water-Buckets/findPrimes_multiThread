@@ -10,10 +10,6 @@
 #include "segSieveMethods.h"
 #include "sieveMethods.h"
 #include <cctype>
-#include <iostream>
-#include <stdexcept>
-#include <string>
-#include <vector>
 
 inline bool isNumeric(const std::string &str) {
   for (char c : str)
