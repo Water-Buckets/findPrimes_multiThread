@@ -9,8 +9,6 @@ void argInput(char *argv[]) {
   std::cerr << __func__ << std::endl;
 #endif
 
-  // argv[1]: 线程数, argv[2]: 算法, argv[3]: 上限, argv[4]: 输出文件
-
   // 检查输入是否合法
   if (!isNumeric(argv[1]) || !isNumeric(argv[3]) || argv[2][1])
     throw std::invalid_argument("Invalid input.");
