@@ -7,6 +7,10 @@
 void monoThread(const long long &n, const std::string &file,
                 void (*pMonoMethod)(const long long &n,
                                     std::vector<long long> &primes)) {
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   // check if pMonoMethod is null
   if (pMonoMethod == nullptr)
     throw std::runtime_error("Null pointer exception.");
@@ -19,7 +23,7 @@ void monoThread(const long long &n, const std::string &file,
   auto writeResults =
       timer(writeToFileMonoT, "Time elapsed writing to file: ", primes, file);
   if (writeResults.first != 0)
-    throw std::runtime_error("Error writing to file");
+    throw std::runtime_error("Error when writing to file");
 
   auto durationWrite = writeResults.second;
 

@@ -1,6 +1,12 @@
 #include "includes/main.h"
 
 int main(int argc, char *argv[]) {
+#ifndef NDEBUG
+  std::cerr << __func__ << ": " << argc << std::endl;
+  for (int i = 0; i != argc; ++i) {
+    std::cerr << __func__ << ": " << argv[i] << std::endl;
+  }
+#endif
   switch (argc) {
   case 1:
     // Print help when no arguments are given

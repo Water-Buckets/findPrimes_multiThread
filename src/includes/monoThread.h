@@ -13,10 +13,20 @@
 inline std::vector<long long> monoThreadSieve(
     const long long &n,
     void (*pMonoMethod)(const long long &n, std::vector<long long> &primes)) {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   // define primes vector to store primes
   std::vector<long long> primes;
   // call pMonoMethod based on the pointer
   (*pMonoMethod)(n, primes);
+
+#ifndef NDEBUG
+  std::cerr << __func__ << ": " << *primes.begin() << " " << *--primes.end()
+            << std::endl;
+#endif
 
   return primes;
 }
@@ -24,8 +34,16 @@ inline std::vector<long long> monoThreadSieve(
 // Writing to file in monoThread mode
 inline int writeToFileMonoT(std::vector<long long> primes,
                             const std::string &file) {
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   // open file
   std::ofstream outfile(file);
+
+#ifndef NDEBUG
+  std::cerr << __func__ << ": " << outfile.is_open() << std::endl;
+#endif
 
   // check if file is open
   if (!outfile.is_open()) {

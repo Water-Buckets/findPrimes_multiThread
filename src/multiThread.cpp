@@ -10,6 +10,11 @@ void multiThread(
                          const std::vector<long long> &preSievedPrimes),
     void (*pPreSieveMethod)(const long long &n,
                             std::vector<long long> &primes)) {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   // check if the input is valid
   if (pMultiMethod == nullptr || pPreSieveMethod == nullptr)
     throw std::runtime_error("Null pointer exception.");

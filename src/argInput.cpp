@@ -4,6 +4,11 @@
 #include "includes/argInput.h"
 
 void argInput(char *argv[]) {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   // argv[1]: 线程数, argv[2]: 算法, argv[3]: 上限, argv[4]: 输出文件
 
   // 检查输入是否合法
@@ -19,14 +24,21 @@ void argInput(char *argv[]) {
   // 检查输入是否合法
   if (n <= 1)
     throw std::invalid_argument("n must be greater than 1.");
+
 #ifndef NDEBUG
   std::cerr << __func__ << ": " << threads << " " << m << " " << n << " "
             << file << std::endl;
 #endif
+
   if (threads == 1) {
     std::cout << "Using monoThread mode" << std::endl;
     void (*pMonoMethod)(const long long &n, std::vector<long long> &primes);
     pMonoMethod = switchMonoMethods(m);
+
+#ifndef NDEBUG
+    std::cerr << "pMonoMethod: " << pMonoMethod << std::endl;
+#endif
+
     monoThread(n, file, pMonoMethod);
   } else if (threads > 1) {
     try {
@@ -37,10 +49,20 @@ void argInput(char *argv[]) {
       void (*pPreSieveMethod)(const long long &n,
                               std::vector<long long> &primes);
       pPreSieveMethod = switchMonoMethods(m);
+
+#ifndef NDEBUG
+      std::cerr << "pPreSieveMethod: " << &pPreSieveMethod << std::endl;
+#endif
+
       void (*pMultiMethod)(const long long &lL, const long long &uL,
                            std::vector<long long> &primes,
                            const std::vector<long long> &preSievedPrimes);
       pMultiMethod = switchMultiMethods(m);
+
+#ifndef NDEBUG
+      std::cerr << "pMultiMethod: " << &pMultiMethod << std::endl;
+#endif
+
       multiThread(threads, n, file, pMultiMethod, pPreSieveMethod);
     } catch (std::invalid_argument &e) {
       std::cerr << e.what() << std::endl;

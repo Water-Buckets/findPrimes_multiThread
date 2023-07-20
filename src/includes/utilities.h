@@ -9,6 +9,11 @@
 // note that the function must have return value
 template <typename T, typename... Args>
 inline auto timer(T fMethod, std::string s, Args... args) {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   auto start = std::chrono::steady_clock::now();
   auto results = fMethod(std::forward<Args>(args)...);
   auto end = std::chrono::steady_clock::now();

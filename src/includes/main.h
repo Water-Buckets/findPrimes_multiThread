@@ -6,8 +6,14 @@
 #define FINDPRIMES_MULTITHREAD_MAIN_H
 
 #include "argInput.h"
+#include <iostream>
 
 inline void printHelp() {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   std::cout << "Usage: findprimes [threads] [method] [n] [outputFile]"
             << std::endl;
   std::cout << "If threads equals 1 the program will run in monoThread mode."

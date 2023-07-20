@@ -15,6 +15,11 @@
 inline auto preSieve(const long long &n,
                      void (*pPreSieveMethod)(const long long &n,
                                              std::vector<long long> &primes)) {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   // calculate sqrt(n)
   long long sqrtN = std::sqrt(n);
 
@@ -23,6 +28,12 @@ inline auto preSieve(const long long &n,
 
   // call preSieveMethod based on the pointer
   (*pPreSieveMethod)(sqrtN, preSievedPrimes);
+
+#ifndef NDEBUG
+  std::cerr << __func__ << ": " << sqrtN << std::endl;
+  std::cerr << __func__ << ": " << *preSievedPrimes.begin() << " "
+            << *--preSievedPrimes.end() << std::endl;
+#endif
 
   return std::make_pair(sqrtN, preSievedPrimes);
 }
@@ -34,6 +45,11 @@ inline std::vector<std::vector<long long>> multiThreadSieve(
     void (*pMultiMethod)(const long long &lL, const long long &uL,
                          std::vector<long long> &primes,
                          const std::vector<long long> &preSievedPrimes)) {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   // range per thread
   long long perThread = (n - sqrtN) / threads;
 
@@ -41,11 +57,15 @@ inline std::vector<std::vector<long long>> multiThreadSieve(
   std::vector<std::thread> vThread;
 
   // define primesVec vector to store primes
-  std::vector<std::vector<long long>> primesVec(threads);
+  std::vector<std::vector<long long>> primesMat(threads);
 
   // check if preSievedPrimes is empty
   if (preSievedPrimes.empty())
     throw std::runtime_error("Empty preSievedPrimes!");
+
+#ifndef NDEBUG
+  std::cerr << __func__ << ": " << perThread << std::endl;
+#endif
 
   // start threads
   for (int i = 0; i < threads; ++i) {
@@ -58,8 +78,12 @@ inline std::vector<std::vector<long long>> multiThreadSieve(
     if (i == threads - 1)
       uL = n;
 
+#ifndef NDEBUG
+    std::cerr << __func__ << ": " << i << ": " << lL << " " << uL << std::endl;
+#endif
+
     // start thread and call pMultiMethod to sieve
-    std::thread thr((*pMultiMethod), lL, uL, std::ref(primesVec[i]),
+    std::thread thr((*pMultiMethod), lL, uL, std::ref(primesMat[i]),
                     std::cref(preSievedPrimes));
 
     // add thread to vThread
@@ -71,7 +95,14 @@ inline std::vector<std::vector<long long>> multiThreadSieve(
     if (thr.joinable())
       thr.join();
 
-  return primesVec;
+#ifndef NDEBUG
+  for (auto &vec : primesMat) {
+    std::cerr << __func__ << ": ";
+    std::cerr << *vec.begin() << " " << *--vec.end() << std::endl;
+  }
+#endif
+
+  return primesMat;
 }
 
 // Writing to file in multiThread mode
@@ -79,8 +110,17 @@ inline long long
 writeToFileMultiT(const std::vector<long long> &preSievedPrimes,
                   const std::vector<std::vector<long long>> &primesVec,
                   const std::string &file) {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   // open file
   std::ofstream outfile(file);
+
+#ifndef NDEBUG
+  std::cerr << __func__ << ": " << outfile.is_open() << std::endl;
+#endif
 
   // check if file is open
   if (!outfile.is_open())

@@ -13,6 +13,11 @@
 #include <iostream>
 
 inline bool isNumeric(const std::string &str) {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   for (char c : str)
     if (!std::isdigit(c))
       return false;
@@ -21,6 +26,11 @@ inline bool isNumeric(const std::string &str) {
 
 inline auto switchMonoMethods(const char &m)
     -> void (*)(const long long &n, std::vector<long long> &primes) {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   switch (m) {
   case 'a':
     std::cout << "Using Trial Division" << std::endl;
@@ -52,6 +62,11 @@ inline auto switchMultiMethods(const char &m)
     -> void (*)(const long long &lL, const long long &uL,
                 std::vector<long long> &primes,
                 const std::vector<long long> &preSievedPrimes) {
+
+#ifndef NDEBUG
+  std::cerr << __func__ << std::endl;
+#endif
+
   switch (m) {
   case 'a':
     return segTrialDivision;
