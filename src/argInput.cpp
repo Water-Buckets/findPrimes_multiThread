@@ -9,17 +9,17 @@ void argInput(char *argv[]) {
     std::cerr << __func__ << std::endl;
 #endif
 
-    // 检查输入是否合法
+    // check if input is valid
     if (!isNumeric(argv[1]) || !isNumeric(argv[3]) || argv[2][1])
       throw std::invalid_argument("Invalid input.");
 
-    // 将输入转换为合适的类型
+    // define required varibles
     int threads = std::stoi(argv[1]);
     char m = argv[2][0];
     long long n = std::stoll(argv[3]);
     std::string file = argv[4];
 
-    // 检查输入是否合法
+    // check if input is valid
     if (n <= 1)
       throw std::invalid_argument("n must be greater than 1.");
 
