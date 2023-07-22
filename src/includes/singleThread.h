@@ -10,7 +10,7 @@
 #include <vector>
 
 // main part of the monoThread function
-inline std::vector<long long> monoThreadSieve(
+inline std::vector<long long> singleThreadSieve(
     const long long &n,
     void (*pMonoMethod)(const long long &n, std::vector<long long> &primes)) {
 
@@ -32,8 +32,8 @@ inline std::vector<long long> monoThreadSieve(
 }
 
 // Writing to file in monoThread mode
-inline int writeToFileMonoT(std::vector<long long> primes,
-                            const std::string &file) {
+inline int writeToFileST(std::vector<long long> primes,
+                         const std::string &file) {
 #ifndef NDEBUG
   std::cerr << __func__ << std::endl;
 #endif
@@ -61,7 +61,7 @@ inline int writeToFileMonoT(std::vector<long long> primes,
 }
 
 // main function of monoThread mode
-void monoThread(const long long &n, const std::string &file,
+void singleThread(const long long &n, const std::string &file,
                 void (*pMonoMethod)(const long long &n,
                                     std::vector<long long> &primes));
 

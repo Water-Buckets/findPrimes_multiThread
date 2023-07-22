@@ -5,10 +5,10 @@
 #ifndef FINDPRIMES_MULTITHREAD_ARGINPUT_H
 #define FINDPRIMES_MULTITHREAD_ARGINPUT_H
 
-#include "monoThread.h"
 #include "multiThread.h"
 #include "segSieveMethods.h"
 #include "sieveMethods.h"
+#include "singleThread.h"
 #include <cctype>
 #include <iostream>
 
@@ -24,7 +24,7 @@ inline bool isNumeric(const std::string &str) {
   return true;
 }
 
-inline auto switchMonoMethods(const char &m)
+inline auto switchSMethods(const char &m)
     -> void (*)(const long long &n, std::vector<long long> &primes) {
 
 #ifndef NDEBUG
@@ -58,7 +58,7 @@ inline auto switchMonoMethods(const char &m)
   }
 }
 
-inline auto switchMultiMethods(const char &m)
+inline auto switchMMethods(const char &m)
     -> void (*)(const long long &lL, const long long &uL,
                 std::vector<long long> &primes,
                 const std::vector<long long> &preSievedPrimes) {

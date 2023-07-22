@@ -107,9 +107,9 @@ inline std::vector<std::vector<long long>> multiThreadSieve(
 
 // Writing to file in multiThread mode
 inline long long
-writeToFileMultiT(const std::vector<long long> &preSievedPrimes,
-                  const std::vector<std::vector<long long>> &primesVec,
-                  const std::string &file) {
+writeToFileMT(const std::vector<long long> &preSievedPrimes,
+              const std::vector<std::vector<long long>> &primesVec,
+              const std::string &file) {
 
 #ifndef NDEBUG
   std::cerr << __func__ << std::endl;

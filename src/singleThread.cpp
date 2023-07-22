@@ -2,11 +2,11 @@
 // Created by ASUS on 2023/7/10.
 //
 
-#include "includes/monoThread.h"
+#include "includes/singleThread.h"
 
-void monoThread(const long long &n, const std::string &file,
-                void (*pMonoMethod)(const long long &n,
-                                    std::vector<long long> &primes)) {
+void singleThread(const long long &n, const std::string &file,
+                  void (*pMonoMethod)(const long long &n,
+                                      std::vector<long long> &primes)) {
 #ifndef NDEBUG
   std::cerr << __func__ << std::endl;
 #endif
@@ -16,12 +16,12 @@ void monoThread(const long long &n, const std::string &file,
     throw std::runtime_error("Null pointer exception.");
 
   auto results =
-      timer(monoThreadSieve, "Time elapsed sieveing: ", n, pMonoMethod);
+      timer(singleThreadSieve, "Time elapsed sieveing: ", n, pMonoMethod);
   auto primes = results.first;
   auto duration = results.second;
 
   auto writeResults =
-      timer(writeToFileMonoT, "Time elapsed writing to file: ", primes, file);
+      timer(writeToFileST, "Time elapsed writing to file: ", primes, file);
   if (writeResults.first != 0)
     throw std::runtime_error("Error when writing to file");
 

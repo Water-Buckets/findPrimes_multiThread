@@ -9,8 +9,8 @@ add_executable(findPrimes_multiThread src/main.cpp
         src/includes/argInput.h
         src/includes/multiThread.h
         src/multiThread.cpp
-        src/monoThread.cpp
-        src/includes/monoThread.h
+        src/singleThread.cpp
+        src/includes/singleThread.h
         src/includes/sieveMethods.h
         src/includes/segSieveMethods.h
         src/sieves/segSieveMethods.cpp

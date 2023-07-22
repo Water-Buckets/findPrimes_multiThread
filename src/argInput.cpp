@@ -31,13 +31,13 @@ void argInput(char *argv[]) {
     if (threads == 1) {
       std::cout << "Using monoThread mode" << std::endl;
       void (*pMonoMethod)(const long long &n, std::vector<long long> &primes);
-      pMonoMethod = switchMonoMethods(m);
+      pMonoMethod = switchSMethods(m);
 
 #ifndef NDEBUG
       std::cerr << "pMonoMethod: " << pMonoMethod << std::endl;
 #endif
 
-      monoThread(n, file, pMonoMethod);
+      singleThread(n, file, pMonoMethod);
     } else if (threads > 1) {
       std::cout << "Using multiThread mode" << std::endl;
       if (m == 'e' || m == 'g')
@@ -45,7 +45,7 @@ void argInput(char *argv[]) {
             "MultiThread mode does not support this algorithm.");
       void (*pPreSieveMethod)(const long long &n,
                               std::vector<long long> &primes);
-      pPreSieveMethod = switchMonoMethods(m);
+      pPreSieveMethod = switchSMethods(m);
 
 #ifndef NDEBUG
       std::cerr << "pPreSieveMethod: " << &pPreSieveMethod << std::endl;
@@ -54,7 +54,7 @@ void argInput(char *argv[]) {
       void (*pMultiMethod)(const long long &lL, const long long &uL,
                            std::vector<long long> &primes,
                            const std::vector<long long> &preSievedPrimes);
-      pMultiMethod = switchMultiMethods(m);
+      pMultiMethod = switchMMethods(m);
 
 #ifndef NDEBUG
       std::cerr << "pMultiMethod: " << &pMultiMethod << std::endl;
