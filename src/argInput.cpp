@@ -29,15 +29,15 @@ void argInput(char *argv[]) {
 #endif
 
     if (threads == 1) {
-      std::cout << "Using monoThread mode" << std::endl;
-      void (*pMonoMethod)(const long long &n, std::vector<long long> &primes);
-      pMonoMethod = switchSMethods(m);
+      std::cout << "Using singleThread mode" << std::endl;
+      void (*pSMethod)(const long long &n, std::vector<long long> &primes);
+      pSMethod = switchSMethods(m);
 
 #ifndef NDEBUG
-      std::cerr << "pMonoMethod: " << pMonoMethod << std::endl;
+      std::cerr << "pSMethod: " << pSMethod << std::endl;
 #endif
 
-      singleThread(n, file, pMonoMethod);
+      singleThread(n, file, pSMethod);
     } else if (threads > 1) {
       std::cout << "Using multiThread mode" << std::endl;
       if (m == 'e' || m == 'g')
@@ -51,16 +51,16 @@ void argInput(char *argv[]) {
       std::cerr << "pPreSieveMethod: " << &pPreSieveMethod << std::endl;
 #endif
 
-      void (*pMultiMethod)(const long long &lL, const long long &uL,
-                           std::vector<long long> &primes,
-                           const std::vector<long long> &preSievedPrimes);
-      pMultiMethod = switchMMethods(m);
+      void (*pMMethod)(const long long &lL, const long long &uL,
+                       std::vector<long long> &primes,
+                       const std::vector<long long> &preSievedPrimes);
+      pMMethod = switchMMethods(m);
 
 #ifndef NDEBUG
-      std::cerr << "pMultiMethod: " << &pMultiMethod << std::endl;
+      std::cerr << "pMMethod: " << &pMMethod << std::endl;
 #endif
 
-      multiThread(threads, n, file, pMultiMethod, pPreSieveMethod);
+      multiThread(threads, n, file, pMMethod, pPreSieveMethod);
     } else
       throw std::invalid_argument("Invalid number of threads");
   } catch (std::invalid_argument &e) {

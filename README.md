@@ -4,7 +4,7 @@ This is a program designed to find all the prime numbers between 2 and a given n
 # Usage: 
 findprimes [threads] [method] [n] [outputFile]
 
-If threads equals 1 the program will run in monoThread mode.
+If threads equals 1 the program will run in singleThread mode.
 Else if threads is over 1 the program will run in multiThread mode.
 You can tell the program to use multiple threads by providing a number for threads.
 If the number of threads is invalid, the program will exit with an error.

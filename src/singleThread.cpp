@@ -5,18 +5,18 @@
 #include "includes/singleThread.h"
 
 void singleThread(const long long &n, const std::string &file,
-                  void (*pMonoMethod)(const long long &n,
-                                      std::vector<long long> &primes)) {
+                  void (*pSMethod)(const long long &n,
+                                   std::vector<long long> &primes)) {
 #ifndef NDEBUG
   std::cerr << __func__ << std::endl;
 #endif
 
-  // check if pMonoMethod is null
-  if (pMonoMethod == nullptr)
+  // check if pSMethod is null
+  if (pSMethod == nullptr)
     throw std::runtime_error("Null pointer exception.");
 
   auto results =
-      timer(singleThreadSieve, "Time elapsed sieveing: ", n, pMonoMethod);
+      timer(singleThreadSieve, "Time elapsed sieveing: ", n, pSMethod);
   auto primes = results.first;
   auto duration = results.second;
 

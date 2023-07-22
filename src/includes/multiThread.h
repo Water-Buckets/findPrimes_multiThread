@@ -42,9 +42,9 @@ inline auto preSieve(const long long &n,
 inline std::vector<std::vector<long long>> multiThreadSieve(
     const long long &n, const long long &sqrtN, const int &threads,
     std::vector<long long> preSievedPrimes,
-    void (*pMultiMethod)(const long long &lL, const long long &uL,
-                         std::vector<long long> &primes,
-                         const std::vector<long long> &preSievedPrimes)) {
+    void (*pMMethod)(const long long &lL, const long long &uL,
+                     std::vector<long long> &primes,
+                     const std::vector<long long> &preSievedPrimes)) {
 
 #ifndef NDEBUG
   std::cerr << __func__ << std::endl;
@@ -83,7 +83,7 @@ inline std::vector<std::vector<long long>> multiThreadSieve(
 #endif
 
     // start thread and call pMultiMethod to sieve
-    std::thread thr((*pMultiMethod), lL, uL, std::ref(primesMat[i]),
+    std::thread thr((*pMMethod), lL, uL, std::ref(primesMat[i]),
                     std::cref(preSievedPrimes));
 
     // add thread to vThread
@@ -146,9 +146,9 @@ writeToFileMT(const std::vector<long long> &preSievedPrimes,
 // main function of multiThread mode
 void multiThread(
     const int &threads, const long long &n, const std::string &file,
-    void (*pMultiMethod)(const long long &lL, const long long &uL,
-                         std::vector<long long> &primes,
-                         const std::vector<long long> &preSievedPrimes),
+    void (*pMMethod)(const long long &lL, const long long &uL,
+                     std::vector<long long> &primes,
+                     const std::vector<long long> &preSievedPrimes),
     void (*pPreSieveMethod)(const long long &n,
                             std::vector<long long> &primes));
 

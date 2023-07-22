@@ -16,7 +16,7 @@ inline void printHelp() {
 
   std::cout << "Usage: findprimes [threads] [method] [n] [outputFile]"
             << std::endl;
-  std::cout << "If threads equals 1 the program will run in monoThread mode."
+  std::cout << "If threads equals 1 the program will run in singleThread mode."
             << std::endl;
   std::cout
       << "Else if threads is over 1 the program will run in multiThread mode."

@@ -5,9 +5,9 @@
 
 void multiThread(
     const int &threads, const long long &n, const std::string &file,
-    void (*pMultiMethod)(const long long &lL, const long long &uL,
-                         std::vector<long long> &primes,
-                         const std::vector<long long> &preSievedPrimes),
+    void (*pMMethod)(const long long &lL, const long long &uL,
+                     std::vector<long long> &primes,
+                     const std::vector<long long> &preSievedPrimes),
     void (*pPreSieveMethod)(const long long &n,
                             std::vector<long long> &primes)) {
 
@@ -16,7 +16,7 @@ void multiThread(
 #endif
 
   // check if the input is valid
-  if (pMultiMethod == nullptr || pPreSieveMethod == nullptr)
+  if (pMMethod == nullptr || pPreSieveMethod == nullptr)
     throw std::runtime_error("Null pointer exception.");
 
   auto preSieveResults =
@@ -27,14 +27,14 @@ void multiThread(
   auto durationPre = preSieveResults.second;
 
   auto sieveResults = timer(multiThreadSieve, "Time elapsed sieveing: ", n,
-                            sqrtN, threads, preSievedPrimes, pMultiMethod);
+                            sqrtN, threads, preSievedPrimes, pMMethod);
 
   auto primesMat = sieveResults.first;
   auto duration = sieveResults.second;
 
   auto writeResults =
-      timer(writeToFileMT,
-            "Time elapsed writing to file: ", preSievedPrimes, primesMat, file);
+      timer(writeToFileMT, "Time elapsed writing to file: ", preSievedPrimes,
+            primesMat, file);
   auto totalSize = writeResults.first;
   auto durationWrite = writeResults.second;
 

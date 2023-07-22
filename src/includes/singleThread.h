@@ -2,17 +2,17 @@
 // Created by ASUS on 2023/7/10.
 //
 
-#ifndef FINDPRIMES_MULTITHREAD_MONOTHREAD_H
-#define FINDPRIMES_MULTITHREAD_MONOTHREAD_H
+#ifndef FINDPRIMES_MULTITHREAD_SINGLETHREAD_H
+#define FINDPRIMES_MULTITHREAD_SINGLETHREAD_H
 
 #include "utilities.h"
 #include <fstream>
 #include <vector>
 
-// main part of the monoThread function
+// main part of the singleThread function
 inline std::vector<long long> singleThreadSieve(
     const long long &n,
-    void (*pMonoMethod)(const long long &n, std::vector<long long> &primes)) {
+    void (*pSMethod)(const long long &n, std::vector<long long> &primes)) {
 
 #ifndef NDEBUG
   std::cerr << __func__ << std::endl;
@@ -20,8 +20,8 @@ inline std::vector<long long> singleThreadSieve(
 
   // define primes vector to store primes
   std::vector<long long> primes;
-  // call pMonoMethod based on the pointer
-  (*pMonoMethod)(n, primes);
+  // call pSMethod based on the pointer
+  (*pSMethod)(n, primes);
 
 #ifndef NDEBUG
   std::cerr << __func__ << ": " << *primes.begin() << " " << *--primes.end()
@@ -31,7 +31,7 @@ inline std::vector<long long> singleThreadSieve(
   return primes;
 }
 
-// Writing to file in monoThread mode
+// Writing to file in singleThread mode
 inline int writeToFileST(std::vector<long long> primes,
                          const std::string &file) {
 #ifndef NDEBUG
@@ -60,9 +60,9 @@ inline int writeToFileST(std::vector<long long> primes,
   return 0;
 }
 
-// main function of monoThread mode
+// main function of singleThread mode
 void singleThread(const long long &n, const std::string &file,
-                void (*pMonoMethod)(const long long &n,
-                                    std::vector<long long> &primes));
+                  void (*pSMethod)(const long long &n,
+                                   std::vector<long long> &primes));
 
-#endif // FINDPRIMES_MULTITHREAD_MONOTHREAD_H
+#endif // FINDPRIMES_MULTITHREAD_SINGLETHREAD_H
