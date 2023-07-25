@@ -16,7 +16,7 @@ void singleThread(const long long &n, const std::string &file,
     throw std::runtime_error("Null pointer exception.");
 
   auto results =
-      timer(singleThreadSieve, "Time elapsed sieveing: ", n, pSMethod);
+      timer(singleThreadSieve, "Time elapsed sieving: ", n, pSMethod);
   auto primes = results.first;
   auto duration = results.second;
 

@@ -27,7 +27,7 @@ void segSundaramSieve(const long long &lL, const long long &uL,
 void atkinSieve(const long long &lL, const long long &uL,
                 std::vector<long long> &primes,
                 const std::vector<long long>
-                    &preSievedPrimes); // unused due tothe complexity of the
+                    &preSievedPrimes); // unused due to the complexity of the
                                        // Atkin Sieve algorithm
 
 void segIncrementalSieve(const long long &lL, const long long &uL,

@@ -20,19 +20,18 @@ void multiThread(
     throw std::runtime_error("Null pointer exception.");
 
   auto preSieveResults =
-      timer(preSieve, "Time elapsed pre-sieveing: ", n, pPreSieveMethod);
+      timer(preSieve, "Time elapsed pre-sieving: ", n, pPreSieveMethod);
 
   long long sqrtN = preSieveResults.first.first;
   auto preSievedPrimes = preSieveResults.first.second;
   auto durationPre = preSieveResults.second;
 
-  auto sieveResults = timer(multiThreadSieve, "Time elapsed sieveing: ", n,
+  auto sieveResults = timer(multiThreadSieve, "Time elapsed sieving: ", n,
                             sqrtN, threads, preSievedPrimes, pMMethod);
 
   auto primesMat = sieveResults.first;
   auto duration = sieveResults.second;
-
-  auto writeResults =
+  primesMat auto writeResults =
       timer(writeToFileMT, "Time elapsed writing to file: ", preSievedPrimes,
             primesMat, file);
   auto totalSize = writeResults.first;
